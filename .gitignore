@@ -1,0 +1,6 @@
+data_common/*
+data_tag_vector/*
+scripts/data_temp.ipynb
+weights/*
+.ipynb_checkpoints/
+__pycache__/
