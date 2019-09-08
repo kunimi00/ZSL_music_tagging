@@ -164,21 +164,21 @@ def main():
             # 1. pos / neg count 40-dim vector
             if args.tag_vector_type == 'inst-pncnt40':
                 print('using instrument pos/neg 40 dim normalized count vector')
-                args.tag_key_to_w2v_vector_dict = pickle.load(
+                args.tag_id_to_w2v_vector_dict = pickle.load(
                     open(data_tag_vector_path + '/genre_id_to_inst_posneg40_cnt_norm_dict.p', 'rb'))
                 args.tag_vec_dim = 40
 
             # 2. pos / neg confidence 40-dim vector
             elif args.tag_vector_type == 'inst-pnconf40':
                 print('using instrument pos/neg 40 dim normalized confidence vector')
-                args.tag_key_to_w2v_vector_dict = pickle.load(
+                args.tag_id_to_w2v_vector_dict = pickle.load(
                     open(data_tag_vector_path + '/genre_id_to_inst_posneg40_conf_norm_dict.p', 'rb'))
                 args.tag_vec_dim = 40
 
             # 3. random vector
             elif args.tag_vector_type == 'random':
                 print('using random vector')
-                args.tag_key_to_w2v_vector_dict = pickle.load(
+                args.tag_id_to_w2v_vector_dict = pickle.load(
                     open(data_tag_vector_path + '/genre_id_to_random_vector_dict.p', 'rb'))
                 args.tag_vec_dim = 40
 
@@ -254,8 +254,9 @@ def main():
         print('saving')
         weight_name = args.load_weights.split('/')[-1]
 
-        save_path = 'pred_embeddings/' + args.exp_dir_info + '/'
+        save_path = 'pred_embeddings/' + exp_dir_info + '/'
         print(os.path.dirname(save_path))
+
         if not os.path.exists(os.path.dirname(save_path)):
             print('os mkdir')
             os.makedirs(os.path.dirname(save_path))

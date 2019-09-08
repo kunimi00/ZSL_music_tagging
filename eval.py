@@ -51,8 +51,6 @@ def main():
 
     args = parser.parse_args()
 
-    data_common_path = os.path.join('data_common', args.dataset)
-    data_tag_vector_path = os.path.join('data_tag_vector', args.dataset)
 
     if args.load_weights != None:
         exp_dir_info = args.load_weights.split('/')[1]
@@ -76,7 +74,9 @@ def main():
         exit(0)
 
     weight_name = args.load_weights.split('/')[-1]
-    save_path = './pred_embeddings/' + args.exp_dir_info + '/'
+    save_path = './pred_embeddings/' + exp_dir_info + '/'
+    data_common_path = os.path.join('data_common', args.dataset)
+    data_tag_vector_path = os.path.join('data_tag_vector', args.dataset)
 
     # 1) audio embeddings
     track_key_to_embedding_dict = pickle.load(
@@ -88,6 +88,8 @@ def main():
 
     # 3) prepare binary matrix
     tag_key_to_track_binary_matrix = pickle.load(open(data_common_path + '/all_tag_to_track_bin_matrix.p', 'rb'))
+
+    print('tag_key_to_track_binary_matrix', tag_key_to_track_binary_matrix.shape)
 
     # 4) load tag split
     tag_split_file_name = data_common_path + '/tag_key_split_' + str(args.tag_split_name) + '.p'
@@ -242,7 +244,7 @@ def main():
         print('* FILTERED prediction table shape :', tag_audio_pred_table.shape)
 
     # FOR A test set
-    if args.eval_setup == 4:
+    if args.eval_track_setup == 4:
         print('*** A test ***')
 
         savename = 'data_matrix/track_keys_A_' + args.track_split_name + '_' + args.tag_split_name + '.p'

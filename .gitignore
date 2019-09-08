@@ -4,3 +4,4 @@ scripts/data_temp.ipynb
 weights/*
 .ipynb_checkpoints/
 __pycache__/
+pred_embeddings/
