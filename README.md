@@ -5,10 +5,10 @@ This code works for both MSD and FMA dataset.
 All pre-filtering of tracks and tags were performed beforehand. 
 We provide the list of tracks/tags and their necessary matrices.
 
-_Zero-shot Learning for Audio-based Music Classification and Tagging, Jeong Choi\*, Jongpil Lee\*, Jiyoung Park, Juhan Nam_
+[Zero-shot Learning for Audio-based Music Classification and Tagging](https://arxiv.org/abs/1907.02670), _Jeong Choi\*, Jongpil Lee\*, Jiyoung Park, Juhan Nam_
 _(\* : equally contributed authors)_
 
-[Arxiv link](https://arxiv.org/abs/1907.02670) / Accepted at [ISMIR 2019](https://ismir2019.ewi.tudelft.nl/?q=accepted-papers)
+/ Accepted at [ISMIR 2019](https://ismir2019.ewi.tudelft.nl/?q=accepted-papers)
 
 #### Data preparation
  First, prepare tag splits (train / test tags)
