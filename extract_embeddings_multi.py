@@ -131,10 +131,11 @@ def main():
         args.data_common_path = data_common_path
 
         # Load data
-        args.track_key_to_tag_binary_matrix = pickle.load(
-            open(args.data_common_path + '/all_track_to_tag_bin_matrix.p', 'rb'))
 
-        args.tag_key_to_track_binary_matrix = args.track_key_to_tag_binary_matrix.T
+        args.tag_key_to_track_binary_matrix = pickle.load(
+            open(args.data_common_path + '/all_tag_to_track_bin_matrix.p', 'rb'))
+
+        args.track_key_to_tag_binary_matrix = args.tag_key_to_track_binary_matrix.T
 
         # Tag Vector Selection
         if args.dataset == 'msd':

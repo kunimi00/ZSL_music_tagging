@@ -137,7 +137,7 @@ def main():
     print('* track_split_name : ', args.track_split_name)
     print('* tag_split_name : ', args.tag_split_name)
 
-    weight_name = './weights/' + exp_dir_info + '/w--ep_{epoch:02d}-loss_{val_loss:.2f}.h5'
+    weight_name = './weights/' + exp_dir_info + '/w-ep_{epoch:02d}-loss_{val_loss:.2f}.h5'
     print('weight name will be :', weight_name)
     if not os.path.exists(os.path.dirname(weight_name)):
         os.makedirs(os.path.dirname(weight_name))

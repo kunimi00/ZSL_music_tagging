@@ -98,6 +98,7 @@ def main():
     # 5) load track / tag id list
     track_ids_in_order = pickle.load(open(data_common_path + '/track_ids_in_key_order.p', 'rb'))
     track_id_to_key_dict = pickle.load(open(data_common_path + '/track_id_to_key_dict.p', 'rb'))
+    print('track_ids_in_order', len(track_ids_in_order))
 
     if args.eval_tag == 0:
         print('training tags:', len(train_tag_keys))
@@ -107,6 +108,7 @@ def main():
         curr_tag_keys = test_tag_keys
 
     if args.gzsl == 1:
+        print('GZSL setting')
         curr_tag_keys = train_tag_keys + test_tag_keys
 
     curr_track_keys = []
@@ -132,8 +134,8 @@ def main():
 
     # 6) load all audio embeddings
     audio_embeddings = []
-    for idx in range(len(track_ids_in_order)):
-        audio_embeddings.append(track_key_to_embedding_dict[track_id_to_key_dict[track_ids_in_order[idx]]])
+    for key in range(len(track_ids_in_order)):
+        audio_embeddings.append(track_key_to_embedding_dict[key])
     audio_embeddings = np.array(audio_embeddings)
     print('all audio embeddings shape :', audio_embeddings.shape)
 
