@@ -6,11 +6,9 @@ All pre-filtering of tracks and tags were performed beforehand.
 We provide the list of tracks/tags and their necessary matrices.
 
 [Zero-shot Learning for Audio-based Music Classification and Tagging](https://arxiv.org/abs/1907.02670), _Jeong Choi\*, Jongpil Lee\*, Jiyoung Park, Juhan Nam_
-_(\* : equally contributed authors)_
+_(\* : equally contributed authors)_ Accepted at [ISMIR 2019](https://ismir2019.ewi.tudelft.nl/?q=accepted-papers)
 
-/ Accepted at [ISMIR 2019](https://ismir2019.ewi.tudelft.nl/?q=accepted-papers)
-
-#### Data preparation
+### Data preparation
  First, prepare tag splits (train / test tags)
 
 ```console  
@@ -25,7 +23,7 @@ python data_split_track.py --dataset msd --tag_split_name TGS01  --track_split_n
 
 
 
-#### Model training / inference / evaluation
+### Model training / inference / evaluation
  
 Training 
 
