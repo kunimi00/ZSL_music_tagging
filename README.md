@@ -5,10 +5,54 @@ This code works for both MSD and FMA dataset.
 All pre-filtering of tracks and tags were performed beforehand. 
 We provide the list of tracks/tags and their necessary matrices.
 
+
+### Separately provided data : _[Link]()_
+```
+├─ data_common
+  ├─ msd
+    ├─ tag_key_split_TGSPP.p 
+        : tag split used in paper
+    ├─ track_keys_AB_TRSPP_TGSPP.p 
+    ├─ track_keys_A_TRSPP_TGSPP.p
+    ├─ track_keys_B_TRSPP_TGSPP.p
+    ├─ track_keys_C_TRSPP_TGSPP.p
+        : track splits used in paper
+          
+    ├─ all_tag_to_track_bin_matrix.p
+    ├─ tag_ids_in_key_order.p
+    ├─ track_ids_in_key_order.p
+    ├─ track_id_to_file_path_dict.p
+    ├─ tag_key_to_id_dict.p 
+       
+  ├─ fma
+    ├─ ... : same as above 
+
+       
+├─ data_tag_vector
+  ├─ msd
+    ├─ ttr_ont_tag_1126_to_glove_dict.p
+        : GloVe vector data 
+          (filtered using Tagtraum genre ontology) 
+  ├─ fma
+    ├─ genre_id_to_inst_posneg40_cnt_norm_dict.p
+    ├─ genre_id_to_inst_posneg40_conf_norm_dict.p    
+        : Instrument vector data
+```
+
+
 [Zero-shot Learning for Audio-based Music Classification and Tagging](https://arxiv.org/abs/1907.02670), _Jeong Choi\*, Jongpil Lee\*, Jiyoung Park, Juhan Nam_
 _(\* : equally contributed authors)_ Accepted at [ISMIR 2019](https://ismir2019.ewi.tudelft.nl/?q=accepted-papers)
 
-### Data preparation
+### Audio (mel-spectogram) preparation (in 'scripts' folder)
+
+```console  
+python preprocess_audio_msd.py --tag_split_name TGS01
+ 
+```
+
+
+### Tag/track split data preparation (in 'scripts' folder)
+
  First, prepare tag splits (train / test tags)
 
 ```console  

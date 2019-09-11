@@ -7,14 +7,14 @@ import pickle
 from tqdm import tqdm
 import pathlib
 
+'''
+Options 
 
-def save_obj_curr_folder(obj, name):
-    with open(name + '.p', 'wb') as f:
-        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+ --dir_wav : path where MSD mp3 files are present 
+ --dir_mel : path to save mel files
 
-def load_obj_curr_folder(name):
-    with open(name + '.p', 'rb') as f:
-        return pickle.load(f)
+'''
+
 
 def preprocess_audio(args, type_feature, metalist, q):
 
@@ -106,14 +106,12 @@ def preprocess_audio(args, type_feature, metalist, q):
 if __name__ == '__main__':
     try:
         parser = argparse.ArgumentParser(description='script')
-        parser.add_argument('--dataset', type=str, default='msd',
-                            help='msd / fma')
+
         parser.add_argument('--dir_wav', type=str, default='/media/bach2/dataset/MSD/songs',
                             help='path to dataset')
         parser.add_argument('--dir_mel', type=str, default='/media/irene/dataset/MSD/mel128',
                             help='path to save separate mel data files')
-        parser.add_argument('--song_path_list_file', type=str, default='data_lf_glove/lf_glove_filtered_file_path_list',
-                            help='path to song path list file')
+
         parser.add_argument('--num_part', type=int, default=12, help='num of cpu')
 
         args = parser.parse_args()
@@ -130,9 +128,10 @@ if __name__ == '__main__':
         args.sample_rate = 22050
 
 
-        print('Dataset to preprocess:', args.dir_wav)
+        print('Dataset to preprocess: MSD')
+        path_list_dict = pickle.load(open('../data_common/msd/track_id_to_file_path_dict.p', 'rb'))
 
-        metalist = load_obj_curr_folder(args.song_path_list_file)
+        metalist = path_list_dict.values()
         metalist.sort()
 
         num_part = args.num_part
@@ -163,12 +162,10 @@ if __name__ == '__main__':
         filtered_list.sort()
         print(len(filtered_list))
 
-        with open(args.dataset + 'lf_audio_filtered_track_file_path_list_sorted.p', 'wb') as handle:
+        with open('MSD_audio_filtered_track_file_path_list.p', 'wb') as handle:
             pickle.dump(filtered_list, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        filtered_track_id_to_tags = []
-
-        with open(args.dataset + 'audio_error_list.p', 'wb') as handle:
+        with open('MSD_audio_error_list.p', 'wb') as handle:
             pickle.dump(error_list, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         for i in range(num_part):
